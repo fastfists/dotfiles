@@ -1,0 +1,70 @@
+
+super + Return
+    $TERMINAL
+
+super + space
+    dmenu_run
+
+super + e
+    dmenu_record
+
+super + r
+	$TERMINAL -e $FILE
+
+super + {_, shift+ }c
+    bspc node -{c, k}
+
+# Recording
+# Take screenshot
+Print
+	maim pic-full-$(date '+%y%m%d-%H%M-%S').png
+# Pick screenshot type
+shift + Print
+	maimpick
+# Print: Record audio or video; Del: kill recording
+super + Print
+	dmenurecord
+
+super + shift + x
+	prompt "Shutdown computer?" "sudo -A shutdown -h now"
+super + shift + BackSpace
+	prompt "Reboot computer?" "sudo -A reboot"
+
+super + w
+    $BROWSER
+
+# focus/swap
+
+# focus the node in the given direction
+super + {_,shift + }{h,j,k,l}
+	bspc node -{f,s} {west,south,north,east}
+
+# focus the node for the given path jump
+super + p
+	bspc node -f @parent
+
+super + escape
+	pkill -USR1 -x sxhkd
+
+# Rotate leaves of tree
+super + shift + {comma,period}
+	bspc desktop -R {90,270}
+
+alt + shift + 
+    bspc quit 1
+
+# Focus or move window to desktops
+mod + {_,shift + }{1-9,0}
+    bspc {desktop -f, window -d} $(bspc query -M -m)/{i,ii,iii,iv,v,vi,vii,viii,ix,x}
+
+#
+# move/resize
+#
+ 
+# expand a window by moving one of its side outward
+super + alt + {h,j,k,l}
+    bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+ 
+# contract a window by moving one of its side inward
+super + alt + shift + {h,j,k,l}
+    bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
