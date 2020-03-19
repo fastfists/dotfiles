@@ -6,6 +6,11 @@
 super + Return
     $TERMINAL
 
+
+# Ranger
+super + r
+    $TERMINAL $FILE
+
 # Open Browsser
 super + w
     $BROWSER
@@ -168,10 +173,10 @@ super + z
     setcolor
 
 super + v
-    $TERMINAL cava
+    bspc node -o 0.8; bspc node -p south; $TERMINAL cava;
 
 super + shift + i
     $TERMINAL gotop
 
-super + Insert
+super + backslash
     ducksearch
