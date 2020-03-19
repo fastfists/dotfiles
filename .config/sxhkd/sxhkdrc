@@ -6,6 +6,10 @@
 super + Return
     $TERMINAL
 
+# Ranger
+super + r
+    $TERMINAL $FILE
+
 super + shift + a
     $TERMINAL pulsemixer
 
@@ -166,10 +170,10 @@ super + z
     setcolor
 
 super + v
-    $TERMINAL cava
+    bspc node -o 0.8; bspc node -p south; $TERMINAL cava;
 
 super + shift + i
     $TERMINAL gotop
 
-super + Insert
+super + backslash
     ducksearch
