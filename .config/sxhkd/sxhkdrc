@@ -6,9 +6,7 @@
 super + Return
     $TERMINAL
 
-super + shift + a
-    $TERMINAL pulsemixer
-
+# Open Browsser
 super + w
     $BROWSER
 
@@ -110,6 +108,10 @@ super + shift + {comma,period}
 #
 ## Audio
 #
+
+# Open audio mixer
+super + shift + a
+    $TERMINAL pulsemixer
 
 # Increase volume
 super + {equal,plus}
