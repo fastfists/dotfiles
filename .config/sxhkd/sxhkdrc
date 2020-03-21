@@ -130,6 +130,17 @@ super {_,shift +} + minus
 super + shift + m
 	lmc toggle
 
+
+#
+## Power
+#
+
+super + shift + x
+	prompt "Shutdown computer?" "sudo -A shutdown -h now"
+super + shift + BackSpace
+	prompt "Reboot computer?" "sudo -A reboot"
+
+
 #
 ## Recording
 #
