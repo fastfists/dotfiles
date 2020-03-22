@@ -54,6 +54,8 @@ let g:ycm_key_list_previous_completion=[]
 let g:ycm_max_diagnostics_to_display=0
 let g:ycm_use_clangd = 0
 
+map gd :YcmCompleter GoToDefinition<CR>
+
 " Some basics:
 nnoremap c "_c
 set nocompatible
