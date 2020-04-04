@@ -8,6 +8,8 @@ PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magent
 [ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
 
 eval $(thefuck --alias)
+eval $(vkshellinit)
+export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig/
 
 autoload -U compinit
 zstyle ':completion:*' menu select

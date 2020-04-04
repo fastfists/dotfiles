@@ -17,6 +17,7 @@ Plug 'valloric/youcompleteme'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'leafgarland/typescript-vim'
 Plug 'baskerville/vim-sxhkdrc'
+Plug 'rdnetto/YCM-Generator', { 'branch' : 'stable' }
 call plug#end()
 
 func! WordProcessor()
