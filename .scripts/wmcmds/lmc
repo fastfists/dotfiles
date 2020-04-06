@@ -2,7 +2,7 @@
 
 NUM="${2:-5}"
 
-toggle () { pulsemixer --togle-mute ;}
+toggle () { pulsemixer --toggle-mute ;}
 mute () { pulsemixer --mute ;}
 up () { pulsemixer --change-volume +"$NUM" ;}
 down () { pulsemixer --change-volume -"$NUM" ;}
