@@ -26,7 +26,7 @@ magenta = ${xrdb:color13:#d3869b}
 cyan = ${xrdb:color14:#8ec07c}
 white = ${xrdb:color15:#ebdbb2}
 background = ${xrdb:color256:#1d2021}
-foreground = ${xrdb:color257:#ebdbb2}
+foreground = ${xrdb:color257:#ebdbb2} 
 
 [bar/bar1]
 monitor = ${env:MONITOR:DisplayPort-1}
@@ -58,7 +58,6 @@ font-0 = mono:pixelsize=9;1
 font-1 = Inconsolata Nerd Font:size=8;1
 font-2 = Noto Color Emoji:scale=10:style=Regular;2
 font-3 = Symbola:pixelsize=9;1
-
 
 ; Other modules: xkeyboard filesystem xbacklight backlight-acpi cpu memory temperature powermenu weather
 modules-left = bspwm xwindow
@@ -181,6 +180,12 @@ label-urgent-padding = 1
 ; label-empty = %index%
 label-empty-foreground = ${colors.lightgray}
 label-empty-padding = 1
+
+ws-icon-0 = code;
+ws-icon-1 = office;
+ws-icon-2 = graphics;
+ws-icon-3 = mail;
+ws-icon-4 = web;
 
 [module/mpd]
 type = internal/mpd

@@ -51,3 +51,5 @@ preexec() { echo -ne '\e[5 q' ;}
 
 # Load zsh-syntax-highlighting; should be last.
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
+
+source /home/fastfist/.config/broot/launcher/bash/br

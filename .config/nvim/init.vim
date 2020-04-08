@@ -36,7 +36,7 @@ func! WordProcessor()
   set complete+=s
 endfu
 
-colorscheme gruvbox
+" colorscheme gruvbox
 
 set bg=dark
 set go=a

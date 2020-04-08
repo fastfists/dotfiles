@@ -141,7 +141,6 @@ XF86MonBrightnessUp
 super + shift + m
 	lmc toggle
 
-
 #
 ## Power
 #
