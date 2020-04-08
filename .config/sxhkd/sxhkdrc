@@ -114,6 +114,11 @@ super + shift + {comma,period}
 ## Audio
 #
 
+# Spotify
+
+super + u
+    spotify
+
 # Open audio mixer
 super + shift + a
     $TERMINAL pulsemixer
@@ -126,6 +131,12 @@ super + {equal,plus}
 super {_,shift +} + minus
 	lmc down {5,15}
 
+XF86MonBrightnessDown
+	xbacklight -dec 15
+
+XF86MonBrightnessUp
+	xbacklight -inc 15
+
 # Toggle mute
 super + shift + m
 	lmc toggle
@@ -136,9 +147,9 @@ super + shift + m
 #
 
 super + shift + x
-	prompt "Shutdown computer?" "sudo -A shutdown -h now"
+	prompt "Shutdown computer?" "shutdown -h now"
 super + shift + BackSpace
-	prompt "Reboot computer?" "sudo -A reboot"
+	prompt "Reboot computer?" "reboot"
 
 
 #
