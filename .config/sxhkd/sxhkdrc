@@ -116,7 +116,7 @@ super + shift + {comma,period}
 
 # Spotify
 
-super + u
+super + shift + u
     spotify
 
 # Open audio mixer
@@ -185,6 +185,10 @@ super + {Left,Down,Up,Right}
 #
 ## Utlities
 #
+
+# Chat app
+super + shift + i
+    yakyak
 
 # Unicode
 super + a

@@ -18,6 +18,8 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'leafgarland/typescript-vim'
 Plug 'baskerville/vim-sxhkdrc'
 Plug 'rdnetto/YCM-Generator', { 'branch' : 'stable' }
+Plug 'arcticicestudio/nord-vim'
+Plug 'evanleck/vim-svelte'
 call plug#end()
 
 func! WordProcessor()
