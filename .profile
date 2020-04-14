@@ -5,11 +5,9 @@
 export PATH="$PATH:$(du "$HOME/.scripts/" | cut -f2 | tr '\n' ':' | sed 's/:*$//')"
 export EDITOR="nvim"
 export TERMINAL="st"
-export BROWSER="firefox"
+export BROWSER="brave"
 export READER="zathura"
 export FILE="ranger"
-export BIB="$HOME/Documents/LaTeX/uni.bib"
-export REFER="$HOME/Documents/referbib"
 export SUDO_ASKPASS="$HOME/.scripts/wmcmds/dmenupass"
 export NOTMUCH_CONFIG="$HOME/.config/notmuch-config"
 export GTK2_RC_FILES="$HOME/.config/gtk-2.0/gtkrc-2.0"
@@ -26,17 +24,21 @@ export LESS_TERMCAP_ue="$(printf '%b' '[0m')"; a="${a%_}"
 
 # Config file
 export ZDOTDIR="$HOME/.config/zsh"
+export ANDROID_HOME=/opt/android-sdk
+export ANDROID_SDK_ROOT=/opt/android-sdk
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
 
 [ ! -f ~/.config/shortcutrc ] && shortcuts >/dev/null 2>&1
 
-echo "$0" | grep "bash$" >/dev/null && [ -f ~/.bashrc ] && source "$HOME/.bashrc"
-
 # Start graphical server if i3 not already running.
-[ "$(tty)" = "/dev/tty1" ] && ! pgrep -x i3 >/dev/null && exec startx
+[ "$(tty)" = "/dev/tty1" ] && ! pgrep -x bspwm >/dev/null && exec startx
 
 # Switch escape and caps if tty:
 sudo -n loadkeys ~/.scripts/ttymaps.kmap 2>/dev/null
 
 export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$PATH:/opt/android-sdk/emulator"
+export PATH="$PATH:/opt/android-sdk/platform-tools"
+export PATH="$PATH:/opt/android-sdk/tools/bin"
 
 source /home/fastfist/.config/broot/launcher/bash/br
