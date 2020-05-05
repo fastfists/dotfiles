@@ -17,7 +17,7 @@ super + w
 
 # program launcher
 super + @space
-    dmenu_run
+    rofi -show drun
  
 #
 ## bspwm hotkeys
@@ -156,15 +156,17 @@ super + shift + BackSpace
 #
 
 Print
-	maim pic-full-$(date '+%y%m%d-%H%M-%S').png
+	maim pic-full-$(date '+%y%m%d-%H%M-%S').png && notify-send "Screenshot taken"
 # Pick screenshot type
 shift + Print
 	maimpick
-# Print: Record audio or video; Del: kill recording
+# Record audio or video; Del: kill recording
 super + Print
 	dmenurecord
+
+# Kill audio recording
 super + Delete
-	dmenurecord kill
+	dmenurecord kill && notify-send "Recording Ended"
 
 #
 ## move/resize
@@ -181,6 +183,9 @@ super + alt + shift + {h,j,k,l}
 # move a floating window
 super + {Left,Down,Up,Right}
     bspc node -v {-20 0,0 20,0 -20,20 0}
+
+super + Tab
+    rofi -show window
 
 #
 ## Utlities
