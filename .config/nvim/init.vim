@@ -1,4 +1,4 @@
-let mapleader =","
+let mapleader =" "
 
 if ! filereadable(expand('~/.config/nvim/autoload/plug.vim'))
 echo "Downloading junegunn/vim-plug to manage plugins..."
@@ -10,16 +10,21 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'tpope/vim-surround'
 Plug 'scrooloose/nerdtree'
 Plug 'bling/vim-airline'
-Plug 'morhetz/gruvbox'
+Plug 'gruvbox-community/gruvbox'
 Plug 'tpope/vim-commentary'
 Plug 'junegunn/goyo.vim'
-Plug 'valloric/youcompleteme'
+Plug 'vimwiki/vimwiki'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'leafgarland/typescript-vim'
 Plug 'baskerville/vim-sxhkdrc'
-Plug 'rdnetto/YCM-Generator', { 'branch' : 'stable' }
+Plug 'neoclide/coc.nvim', { 'branch' : 'release' }
 Plug 'arcticicestudio/nord-vim'
 Plug 'evanleck/vim-svelte'
+Plug 'tpope/vim-fugitive'
+
+Plug 'natebosch/vim-lsc'
+Plug 'natebosch/vim-lsc-dart'
+Plug 'dart-lang/dart-vim-plugin'
 call plug#end()
 
 func! WordProcessor()
@@ -51,13 +56,38 @@ set tabstop=4
 set expandtab
 set shiftwidth=4
 
-" You Complete Me
-let g:ycm_key_list_select_completion=[]
-let g:ycm_key_list_previous_completion=[]
-let g:ycm_max_diagnostics_to_display=0
-let g:ycm_use_clangd = 0
+" Dart Plugin
+let g:lsc_auto_map = v:true
 
-map gd :YcmCompleter GoToDefinition<CR>
+" You Complete Me
+" let g:ycm_key_list_select_completion=[]
+" let g:ycm_key_list_previous_completion=[]
+" let g:ycm_max_diagnostics_to_display=0
+" let g:ycm_use_clangd = 0
+
+" let g:vimwiki_list = [{'path': '~/vimwiki/',
+"                       \ 'syntax': 'markdown', 'ext': '.md'}]
+
+" map gd :YcmCompleter GoToDefinition<CR>
+
+" Vim fugitive
+map <leader> gs :G<CR>
+map <leader> gf :diffget // 2<CR>
+map <leader> gj :diffget // 3<CR>
+
+" Coc
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+noremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+inoremap <silent><expr> <c-space> coc#refresh()
+nmap <leader> gd <Plug>(coc-definiton)
+nmap <leader> gy <Plug>(coc-type-definiton)
+nmap <leader> gi <Plug>(coc-implementation)
+nmap <leader> gr <Plug>(coc-references)
+nnoremap <leader> cr :CocRestart
 
 " Some basics:
 nnoremap c "_c
@@ -93,14 +123,17 @@ map <C-l> <C-w>l
 nnoremap S :%s//g<Left><Left>
 
 " Compile document, be it groff/LaTeX/markdown/etc.
-map <leader>c :w! \| !compiler <c-r>%<CR>
+" map <leader>c :w! \| !compiler <c-r>%<CR>
 
 " Update binds when sxhkdrc is updated.
 	autocmd BufWritePost *sxhkdrc !pkill -USR1 sxhkd
+
+" Update shortcuts
+	autocmd BufWritePost bmfiles,bmdirs !shortcuts
 
 " Copy selected text to system clipboard (requires gvim/nvim/vim-x11 installed):
 vnoremap <C-c> "+y
 map <C-p> "+P
 
 " Goyo
-map <leader>g :Goyo
+map <leader>gg :Goyo<CR>
