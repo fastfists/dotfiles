@@ -73,7 +73,7 @@ for i in groups:
 layouts = [
     layout.MonadTall(),
     layout.TreeTab(),
-
+    layout.Max(),
     # layout.Stack(num_stacks=2),
     # Try more layouts by unleashing below layouts.
     # layout.Tile(),
@@ -88,13 +88,13 @@ layouts = [
 widget_defaults = dict(
     font='sans',
     fontsize=12,
-    padding=3,
+    padding=0,
 )
 extension_defaults = widget_defaults.copy()
 
 screens = [
     Screen(
-        top=bar.Bar(
+        bottom=bar.Bar(
             [
                 widget.CurrentLayout(),
                 widget.GroupBox(),
