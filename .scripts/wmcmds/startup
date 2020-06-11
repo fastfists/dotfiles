@@ -1,0 +1,8 @@
+#!/bin/sh
+
+remaps &
+setbg &
+xcompmgr &
+unclutter &
+caffeine-indicator &
+~/.config/screenlayout/default.sh &
