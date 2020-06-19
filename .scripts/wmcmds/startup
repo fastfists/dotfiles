@@ -2,7 +2,6 @@
 
 remaps &
 setbg &
-xcompmgr &
+picom &
 unclutter &
-caffeine-indicator &
 ~/.config/screenlayout/default.sh &

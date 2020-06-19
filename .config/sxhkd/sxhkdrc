@@ -126,6 +126,12 @@ super + shift + u
 super + shift + a
     $TERMINAL pulsemixer
 
+XF86AudioMute
+	lmc toggle
+
+XF86Audio{Raise,Lower}Volume
+	lmc {up, down} 5
+
 # Increase volume
 super + {equal,plus}
 	lmc  up {5,15}
@@ -135,10 +141,10 @@ super {_,shift +} + minus
 	lmc down {5,15}
 
 XF86MonBrightnessDown
-	xbacklight -dec 15
+	xbacklight -dec 5
 
 XF86MonBrightnessUp
-	xbacklight -inc 15
+	xbacklight -inc 5
 
 # Toggle mute
 super + shift + m
@@ -159,7 +165,7 @@ super + shift + BackSpace
 #
 
 Print
-	maim pic-full-$(date '+%y%m%d-%H%M-%S').png && notify-send "Screenshot taken"
+	maim | xclip -selection clipboard -t image/png && notify-send "Screenshot taken"
 # Pick screenshot type
 shift + Print
 	maimpick

@@ -7,6 +7,7 @@ silent !curl "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vi
 endif
 
 call plug#begin('~/.config/nvim/plugged')
+Plug 'ThePrimeagen/vim-be-good'
 Plug 'tpope/vim-surround'
 Plug 'scrooloose/nerdtree'
 Plug 'bling/vim-airline'
@@ -20,6 +21,12 @@ Plug 'baskerville/vim-sxhkdrc'
 Plug 'rdnetto/YCM-Generator', { 'branch' : 'stable' }
 Plug 'arcticicestudio/nord-vim'
 Plug 'evanleck/vim-svelte'
+Plug 'vimwiki/vimwiki'
+Plug 'altercation/vim-colors-solarized' 
+Plug 'arcticicestudio/nord-vim'
+Plug 'osyo-manga/unite-rofi'
+Plug 'tpope/vim-fugitive'
+Plug 'cespare/vim-toml'
 call plug#end()
 
 func! WordProcessor()
@@ -38,14 +45,6 @@ func! WordProcessor()
   set complete+=s
 endfu
 
-colorscheme gruvbox
-
-set bg=dark
-set go=a
-set mouse=a
-set nohlsearch
-set clipboard=unnamedplus
-
 " Tabs
 set tabstop=4
 set expandtab
@@ -57,6 +56,8 @@ let g:ycm_key_list_previous_completion=[]
 let g:ycm_max_diagnostics_to_display=0
 let g:ycm_use_clangd = 0
 
+let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
+
 map gd :YcmCompleter GoToDefinition<CR>
 
 " Some basics:
@@ -66,6 +67,14 @@ filetype plugin on
 syntax on
 set encoding=utf-8
 set number relativenumber
+
+set bg=dark
+set go=a
+set mouse=a
+set nohlsearch
+set clipboard=unnamedplus
+
+colorscheme nord
 
 " Enable autocompletion:
 set wildmode=longest,list,full
@@ -97,6 +106,7 @@ map <leader>c :w! \| !compiler <c-r>%<CR>
 
 " Update binds when sxhkdrc is updated.
 	autocmd BufWritePost *sxhkdrc !pkill -USR1 sxhkd
+	autocmd BufWritePost libinput-gestures.conf !libinput-gestures-setup restart
 
 " Copy selected text to system clipboard (requires gvim/nvim/vim-x11 installed):
 vnoremap <C-c> "+y
