@@ -1,4 +1,4 @@
-let mapleader =" "
+let mapleader = " "
 
 if ! filereadable(expand('~/.config/nvim/autoload/plug.vim'))
 echo "Downloading junegunn/vim-plug to manage plugins..."
@@ -14,17 +14,15 @@ Plug 'gruvbox-community/gruvbox'
 Plug 'tpope/vim-commentary'
 Plug 'junegunn/goyo.vim'
 Plug 'vimwiki/vimwiki'
-Plug 'terryma/vim-multiple-cursors'
 Plug 'leafgarland/typescript-vim'
 Plug 'baskerville/vim-sxhkdrc'
 Plug 'neoclide/coc.nvim', { 'branch' : 'release' }
 Plug 'arcticicestudio/nord-vim'
 Plug 'evanleck/vim-svelte'
 Plug 'tpope/vim-fugitive'
-
-Plug 'natebosch/vim-lsc'
-Plug 'natebosch/vim-lsc-dart'
+Plug 'kien/ctrlp.vim'
 Plug 'dart-lang/dart-vim-plugin'
+Plug 'terryma/vim-multiple-cursors'
 call plug#end()
 
 func! WordProcessor()
@@ -56,24 +54,22 @@ set tabstop=4
 set expandtab
 set shiftwidth=4
 
-" Dart Plugin
-let g:lsc_auto_map = v:true
-
 " You Complete Me
 " let g:ycm_key_list_select_completion=[]
 " let g:ycm_key_list_previous_completion=[]
 " let g:ycm_max_diagnostics_to_display=0
 " let g:ycm_use_clangd = 0
 
-" let g:vimwiki_list = [{'path': '~/vimwiki/',
-"                       \ 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_list = [{'path': '~/vimwiki/',
+                      \ 'syntax': 'markdown', 'ext': '.md'}]
 
 " map gd :YcmCompleter GoToDefinition<CR>
 
 " Vim fugitive
-map <leader> gs :G<CR>
-map <leader> gf :diffget // 2<CR>
-map <leader> gj :diffget // 3<CR>
+map <leader>gs :G<CR>
+map <leader>gf :diffget // 2<CR>
+map <leader>gj :diffget // 3<CR>
+
 
 " Coc
 function! s:check_back_space() abort
@@ -81,12 +77,20 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
+inoremap <silent><expr> <C-space> coc#refresh()
+
+
+
 noremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 inoremap <silent><expr> <c-space> coc#refresh()
-nmap <leader> gd <Plug>(coc-definiton)
-nmap <leader> gy <Plug>(coc-type-definiton)
-nmap <leader> gi <Plug>(coc-implementation)
-nmap <leader> gr <Plug>(coc-references)
+map <leader>gi <Plug>(coc-implementation)
+map <leader>gr <Plug>(coc-references)
+map <leader>gd <Plug>(coc-definiton)
+map <leader>gy <Plug>(coc-type-definiton)
+map <leader>ac <Plug>(coc-codeaction)
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
 nnoremap <leader> cr :CocRestart
 
 " Some basics:
@@ -136,4 +140,4 @@ vnoremap <C-c> "+y
 map <C-p> "+P
 
 " Goyo
-map <leader>gg :Goyo<CR>
+" map <leader>gg :Goyo<CR>

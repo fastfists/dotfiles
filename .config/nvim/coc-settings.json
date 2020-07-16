@@ -1,0 +1,7 @@
+{
+    "flutter.sdk.flutter-lookup": "/home/fastfist/develop/flutter/bin/flutter",
+    "python.jediEnabled": false,
+    "coc.preferences.formatOnSaveFiletypes": [
+        "dart"
+    ]
+}
