@@ -3,5 +3,8 @@
 remaps &
 setbg &
 picom &
+dunst &
+picom &
 unclutter &
-~/.config/screenlayout/default.sh &
+sudo -A powertop --auto-tune &
+/.config/screenlayout/default.sh &

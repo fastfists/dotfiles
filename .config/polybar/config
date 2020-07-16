@@ -161,8 +161,8 @@ type = internal/bspwm
 
 ws-icon-0 = main; 
 ws-icon-1 = web;
-ws-icon-2 = chat;
-ws-icon-3 = music; 
+ws-icon-2 = chat;
+ws-icon-3 = music; 
 ws-icon-4 = thrash; 
 ws-icon-default =  
 

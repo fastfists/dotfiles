@@ -29,6 +29,8 @@ func! WordProcessor()
   " movement changes
   map j gj
   map k gk
+  map $ g$
+  map 0 g0
   " formatting text
   setlocal formatoptions=1
   setlocal noexpandtab
@@ -37,6 +39,7 @@ func! WordProcessor()
   " spelling and thesaurus
   setlocal spell spelllang=en_us
   set thesaurus+=/home/test/.vim/thesaurus/mthesaur.txt
+
   " complete+=s makes autocompletion search the thesaurus
   set complete+=s
 endfu
@@ -69,7 +72,6 @@ let g:vimwiki_list = [{'path': '~/vimwiki/',
 map <leader>gs :G<CR>
 map <leader>gf :diffget // 2<CR>
 map <leader>gj :diffget // 3<CR>
-
 
 " Coc
 function! s:check_back_space() abort
@@ -115,7 +117,6 @@ set splitbelow splitright
 
 " Nerd tree
 map <leader>n :NERDTreeToggle<CR>
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " Shortcutting split navigation, saving a keypress:
 map <C-h> <C-w>h
