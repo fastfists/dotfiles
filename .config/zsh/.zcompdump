@@ -1,4 +1,4 @@
-#files: 784	version: 5.8
+#files: 799	version: 5.8
 
 _comps=(
 '-' '_precommand'
@@ -150,6 +150,7 @@ _comps=(
 'chcon' '_chcon'
 'chdir' '_cd'
 'chfn' '_users'
+'chg' '_hg'
 'chgrp' '_chown'
 'chimera' '_webbrowser'
 'chkconfig' '_chkconfig'
@@ -253,6 +254,8 @@ _comps=(
 'dmesg' '_dmesg'
 'dmidecode' '_dmidecode'
 'doas' '_doas'
+'docker' '_docker'
+'dockerd' '_docker'
 'domainname' '_yp'
 'dos2unix' '_dos2unix'
 'drill' '_drill'
@@ -561,6 +564,7 @@ _comps=(
 'heat' '_openstack'
 'help' '_sccs'
 'hexdump' '_hexdump'
+'hg' '_hg'
 'hilite' '_precommand'
 'history' '_fc'
 'host' '_host'
@@ -632,6 +636,7 @@ _comps=(
 'killall' '_killall'
 'killall5' '_killall'
 'kioclient' '_kfmclient'
+'kitty' '_kitty'
 'knock' '_knock'
 'konqueror' '_webbrowser'
 'kpartx' '_kpartx'
@@ -730,6 +735,10 @@ _comps=(
 'mencal' '_mencal'
 'mere' '_mere'
 'merge' '_rcs'
+'meson' '_meson'
+'mesonconf' '_meson'
+'mesonintrospect' '_meson'
+'mesontest' '_meson'
 'metaflac' '_flac'
 'mformat' '_mtools'
 'mgv' '_pspdf'
@@ -821,6 +830,7 @@ _comps=(
 'nginx' '_nginx'
 'ngrep' '_ngrep'
 'nice' '_nice'
+'ninja' '_ninja'
 'nkf' '_nkf'
 'nl' '_nl'
 'nm' '_nm'
@@ -987,6 +997,7 @@ _comps=(
 'pyhtmlizer' '_twisted'
 'qdbus' '_qdbus'
 'qiv' '_qiv'
+'qpdf' '_qpdf'
 'quilt' '_quilt'
 'r' '_fc'
 'rake' '_rake'
@@ -1120,6 +1131,7 @@ _comps=(
 'smbclient' '_samba'
 'smbcontrol' '_samba'
 'smbstatus' '_samba'
+'snap' '_snap'
 'soa' '_hosts'
 'socket' '_socket'
 'sort' '_sort'
@@ -1356,6 +1368,7 @@ _comps=(
 '-vared-' '_in_vared'
 'vared' '_vared'
 'vcsh' '_vcsh'
+'vifm' '_vifm'
 'vim' '_vim'
 'vimdiff' '_vim'
 'virsh' '_libvirt'
@@ -1526,6 +1539,9 @@ _services=(
 'lzma' 'xz'
 'Mail' 'mail'
 'mailx' 'mail'
+'mesonconf' 'meson-configure'
+'mesonintrospect' 'meson-introspect'
+'mesontest' 'meson-test'
 'mktunes.pl' 'mktunes'
 'nail' 'mail'
 'ncl' 'nc'
@@ -1621,15 +1637,18 @@ bindkey '^[,' _history-complete-newer
 bindkey '^[/' _history-complete-older
 bindkey '^[~' _bash_complete-word
 
-autoload -Uz _bootctl _bspc _busctl _cargo _coredumpctl \
-            _curl _hostnamectl _journalctl _kernel-install _libinput \
-            _localectl _loginctl _machinectl _mkinitcpio _networkctl \
+autoload -Uz _bootctl _bspc _busctl _cargo _code \
+            _code-oss _coredumpctl _curl _docker _flatpak \
+            _hg _hostnamectl _journalctl _kdeconnect _kernel-install \
+            _kitty _libinput _localectl _loginctl _machinectl \
+            _meson _mkinitcpio _mpv _networkctl _ninja \
             _pacman _pkgfile _polybar _polybar_msg _pulseaudio \
-            _pulseaudio-ctl _resolvectl _sd_hosts_or_user_at_host _sd_machines _sd_outputmodes \
-            _sd_unit_files _systemctl _systemd _systemd-analyze _systemd-delta \
-            _systemd-inhibit _systemd-nspawn _systemd-run _systemd-tmpfiles _timedatectl \
-            _udevadm _udiskie _udiskie-mount _udiskie-umount _xwallpaper \
-            _yadm _yay _zathura _cdr _all_labels \
+            _pulseaudio-ctl _qpdf _resolvectl _rg _sd_hosts_or_user_at_host \
+            _sd_machines _sd_outputmodes _sd_unit_files _snap _systemctl \
+            _systemd _systemd-analyze _systemd-delta _systemd-inhibit _systemd-nspawn \
+            _systemd-run _systemd-tmpfiles _timedatectl _udevadm _udiskie \
+            _udiskie-mount _udiskie-umount _vifm _xwallpaper _yadm \
+            _yay _youtube-dl _zathura _cdr _all_labels \
             _all_matches _alternative _approximate _arg_compile _arguments \
             _bash_completions _cache_invalid _call_function _combination _complete \
             _complete_debug _complete_help _complete_help_generic _complete_tag _comp_locale \

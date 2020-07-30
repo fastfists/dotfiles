@@ -9,6 +9,8 @@ mod = "mod4"
 alt = "mod1"
 
 terminal = getenv("TERMINAL")
+fileManager = getenv("FILE")
+browser = getenv("BROWSER")
 lazy.spawn("startup &")
 
 keys = [
@@ -43,7 +45,7 @@ keys = [
     # Screencapture
 
     
-    # Key([], "Print", lazy.spawn("maim pic-full-$(date '+%y%m%d-%h%m-%s').png && notify-send \"screenshot taken\""), desc="Screenshot"), 
+    Key([], "Print", lazy.spawn("maimpick"), desc="Screenshot"), 
     # Key(["shift" ], "Print", lazy.spawn("maimpick"), desc="pick screenshot type"), 
     # Key(["super"], "Print", lazy.spawn("dmenurecord"), desc="record audio or video; del: kill recording"), 
     # Key(["super"], "Delete", lazy.spawn("dmenurecord kill && notify-send \"recording ended\" "), desc="kill audio recording"), 
@@ -51,20 +53,32 @@ keys = [
 
 
     # Applications
-    Key([mod], "r", lazy.spawncmd(), desc="File Manager"),
+    Key([mod], "r", lazy.spawn(fileManager), desc="File Manager"),
+    Key([mod], "w", lazy.spawn(browser), desc="File Manager"),
 ]
 
-programs = ((), (), ())
+group_names = [
+        "main",
+        "side",
+        "d",
+        "f",
+        "thrash",
+        "i",
+        "o",
+        "p",
+        ]
 
-groups = [Group(i) for i in "asdfuiop"]
+groups = [
+  Group(i) for i in group_names
+]
 
-for i in groups:
+for group, letter in zip(groups, "asdfuiop"):
     keys.extend([
         # mod1 + letter of group = switch to group
-        Key([mod], i.name, lazy.group[i.name].toscreen()),
+        Key([mod], letter, lazy.group[group.name].toscreen()),
 
         # mod1 + shift + letter of group = switch to & move focused window to group
-        Key([mod, "shift"], i.name, lazy.window.togroup(i.name, switch_group=True)),
+        Key([mod, "shift"], letter, lazy.window.togroup(group.name, switch_group=True)),
         # Or, use below if you prefer not to switch to that group.
         # # mod1 + shift + letter of group = move focused window to group
         # Key([mod, "shift"], i.name, lazy.window.togroup(i.name)),
@@ -109,7 +123,7 @@ screens = [
         ),
     ),
     Screen(
-        top=bar.Bar(
+        bottom=bar.Bar(
             [
                 widget.CurrentLayout(),
                 widget.GroupBox(),
