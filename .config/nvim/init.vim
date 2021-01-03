@@ -12,6 +12,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'bling/vim-airline'
 Plug 'gruvbox-community/gruvbox'
 Plug 'tpope/vim-commentary'
+Plug 'junegunn/limelight.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'vimwiki/vimwiki'
 Plug 'leafgarland/typescript-vim'
@@ -23,12 +24,16 @@ Plug 'tpope/vim-fugitive'
 Plug 'kien/ctrlp.vim'
 Plug 'dart-lang/dart-vim-plugin'
 Plug 'terryma/vim-multiple-cursors'
+Plug 'lilydjwg/colorizer'
+Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(08) } }
 call plug#end()
 
 func! WordProcessor()
   " movement changes
   map j gj
   map k gk
+  map $ g$
+  map 0 g0
   " formatting text
   setlocal formatoptions=1
   setlocal noexpandtab
@@ -80,18 +85,19 @@ endfunction
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 inoremap <silent><expr> <C-space> coc#refresh()
 
-
-
 noremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 inoremap <silent><expr> <c-space> coc#refresh()
 map <leader>gi <Plug>(coc-implementation)
 map <leader>gr <Plug>(coc-references)
-map <leader>gd <Plug>(coc-definiton)
+nmap <silent> gd <Plug>(coc-definiton)
 map <leader>gy <Plug>(coc-type-definiton)
-map <leader>ac <Plug>(coc-codeaction)
+map <leader>ca <Plug>(coc-codeaction)
 xmap <leader>a  <Plug>(coc-codeaction-selected)
 nmap <leader>a  <Plug>(coc-codeaction-selected)
-nnoremap <leader> cr :CocRestart
+vmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+nnoremap <leader>cr :CocRestart<CR>
+nnoremap <leader>cl :CocList commands<CR>
 
 " Some basics:
 nnoremap c "_c
@@ -127,7 +133,7 @@ map <C-l> <C-w>l
 nnoremap S :%s//g<Left><Left>
 
 " Compile document, be it groff/LaTeX/markdown/etc.
-" map <leader>c :w! \| !compiler <c-r>%<CR>
+map <leader>cc :w! \| !compiler <c-r>%<CR>
 
 " Update binds when sxhkdrc is updated.
 	autocmd BufWritePost *sxhkdrc !pkill -USR1 sxhkd
@@ -140,4 +146,31 @@ vnoremap <C-c> "+y
 map <C-p> "+P
 
 " Goyo
-" map <leader>gg :Goyo<CR>
+map <leader>gg :Goyo<CR>
+
+" Color name (:help cterm-colors) or ANSI code
+let g:limelight_conceal_ctermfg = 'gray'
+let g:limelight_conceal_ctermfg = 240
+
+" Color name (:help gui-colors) or RGB color
+let g:limelight_conceal_guifg = 'DarkGray'
+let g:limelight_conceal_guifg = '#777777'
+
+" Default: 0.5
+let g:limelight_default_coefficient = 0.7
+
+" Number of preceding/following paragraphs to include (default: 0)
+let g:limelight_paragraph_span = 2
+
+" Beginning/end of paragraph
+"   When there's no empty line between the paragraphs
+"   and each paragraph starts with indentation
+" let g:limelight_bop = '^\s'
+" let g:limelight_eop = '\ze\n^\s'
+
+" Highlighting priority (default: 10)
+"   Set it to -1 not to overrule hlsearch
+let g:limelight_priority = 10
+
+autocmd! User GoyoEnter Limelight
+autocmd! User GoyoLeave Limelight!
